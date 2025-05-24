@@ -1,0 +1,21 @@
+APPLI		= fast
+CC			= gcc
+FLAGS		= -O3 -Wall -Wextra -W -g --std=c89
+INCLUDE		= -I../util
+# FLAGS		= -Wall -W -Wl,--stack,10485760 -g　--std=c89
+# please replace when Segmentation fault occured
+SRCS		= reference.c
+TARGET		= $(APPLI).exe
+DEPEND		= $(patsubst %.c,%.d,$(SRCS))
+
+all		: $(TARGET) $(DEPEND)
+$(TARGET)	: $(SRCS)
+	$(CC) $(FLAGS) $(INCLUDE) $(SRCS) -o $(TARGET)
+clean		:
+	rm -rf $(TARGET) $(DEPEND)
+
+-include $(DEPEND)
+
+$(DEPEND): $(SRCS)
+	$(info generate $@)
+	@$(CC) -MM $(FLAGS) $(INCLUDE) $(SRCS) | sed 's/\($*\)\.o[ :]*/\1.o $@ : /g' > $@

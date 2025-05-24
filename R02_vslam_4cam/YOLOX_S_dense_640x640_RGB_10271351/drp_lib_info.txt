@@ -1,0 +1,80 @@
+18  # driver version  v0.2 
+72  # driver version >v0.3
+# imagescaler  [MASK : ON]
+# reorg_st2  [MASK : ON]
+# quantize  [MASK : ON]
+# quantize  [MASK : ON]
+# resize_onnx  [MASK : ON]
+# quantize  [MASK : ON]
+# quantize  [MASK : ON]
+# resize_onnx  [MASK : ON]
+# quantize  [MASK : ON]
+# quantize  [MASK : ON]
+# transpose  [MASK : ON]
+# cast_fp16_fp32  [MASK : ON]
+# quantize  [MASK : ON]
+# transpose  [MASK : ON]
+# cast_fp16_fp32  [MASK : ON]
+# quantize  [MASK : ON]
+# transpose  [MASK : ON]
+# cast_fp16_fp32  [MASK : ON]
+# ============================
+# Address data in drp_param.bin
+# DRP LIB name[Layer Name]
+# [Start position], [Size(Byte)], [Param name], [Value]
+imagescaler[0_node_pre_0_0_imagescaler_R_W]
+Start:0[Byte],Size:4[Byte],Param:raddr,Value:0x80000000
+Start:4[Byte],Size:4[Byte],Param:waddr,Value:0x8012c000
+Start:48[Byte],Size:4[Byte],Param:ADD_ADDR,Value:0x823e5300
+Start:52[Byte],Size:4[Byte],Param:MUL_ADDR,Value:0x823e5340
+reorg_st2[1_node_backbone_backbone_stem_Slice_1_output_0_QuantizeLinear_R_W]
+Start:64[Byte],Size:4[Byte],Param:raddr,Value:0x8012c000
+Start:68[Byte],Size:4[Byte],Param:waddr,Value:0x80384000
+quantize[2_node_backbone_backbone_stem_Concat_output_0_R_W]
+Start:120[Byte],Size:4[Byte],Param:raddr,Value:0x80384000
+Start:124[Byte],Size:4[Byte],Param:waddr,Value:0x805dc000
+quantize[72_node_backbone_upsample_Resize_output_0_deq_in_R_W]
+Start:184[Byte],Size:4[Byte],Param:raddr,Value:0x814b4000
+Start:188[Byte],Size:4[Byte],Param:waddr,Value:0x814cd000
+resize_onnx[73_node_backbone_upsample_Resize_output_0_R_W]
+Start:248[Byte],Size:4[Byte],Param:raddr,Value:0x814cd000
+Start:252[Byte],Size:4[Byte],Param:waddr,Value:0x814ff000
+quantize[74_node_backbone_upsample_Resize_output_0_q_out_R_W]
+Start:304[Byte],Size:4[Byte],Param:raddr,Value:0x814ff000
+Start:308[Byte],Size:4[Byte],Param:waddr,Value:0x815c7000
+quantize[86_node_backbone_upsample_1_Resize_output_0_deq_in_R_W]
+Start:368[Byte],Size:4[Byte],Param:raddr,Value:0x81757000
+Start:372[Byte],Size:4[Byte],Param:waddr,Value:0x81789000
+resize_onnx[87_node_backbone_upsample_1_Resize_output_0_R_W]
+Start:432[Byte],Size:4[Byte],Param:raddr,Value:0x81789000
+Start:436[Byte],Size:4[Byte],Param:waddr,Value:0x817ed000
+quantize[88_node_backbone_upsample_1_Resize_output_0_q_out_R_W]
+Start:488[Byte],Size:4[Byte],Param:raddr,Value:0x817ed000
+Start:492[Byte],Size:4[Byte],Param:waddr,Value:0x8197d000
+quantize[136_node_head_Concat_2_output_0_DequantizeLinear_R_W]
+Start:552[Byte],Size:4[Byte],Param:raddr,Value:0x81f605c0
+Start:556[Byte],Size:4[Byte],Param:waddr,Value:0x81f62d00
+transpose[137_node_post_0_0_transpose_R_W]
+Start:616[Byte],Size:4[Byte],Param:raddr,Value:0x81f62d00
+Start:620[Byte],Size:4[Byte],Param:waddr,Value:0x81f67b40
+cast_fp16_fp32[138_node_post_0_1_cast_fp16_fp32_R_W]
+Start:672[Byte],Size:4[Byte],Param:raddr,Value:0x81f67b40
+Start:676[Byte],Size:4[Byte],Param:waddr,Value:0x823db600
+quantize[153_node_head_Concat_1_output_0_DequantizeLinear_R_W]
+Start:728[Byte],Size:4[Byte],Param:raddr,Value:0x81ff7a80
+Start:732[Byte],Size:4[Byte],Param:waddr,Value:0x820016c0
+transpose[154_node_post_1_0_transpose_R_W]
+Start:792[Byte],Size:4[Byte],Param:raddr,Value:0x820016c0
+Start:796[Byte],Size:4[Byte],Param:waddr,Value:0x82014f40
+cast_fp16_fp32[155_node_post_1_1_cast_fp16_fp32_R_W]
+Start:848[Byte],Size:4[Byte],Param:raddr,Value:0x82014f40
+Start:852[Byte],Size:4[Byte],Param:waddr,Value:0x823b4500
+quantize[170_node_head_Concat_output_0_DequantizeLinear_R_W]
+Start:904[Byte],Size:4[Byte],Param:raddr,Value:0x82254bc0
+Start:908[Byte],Size:4[Byte],Param:waddr,Value:0x8227bcc0
+transpose[171_node_post_2_0_transpose_R_W]
+Start:968[Byte],Size:4[Byte],Param:raddr,Value:0x8227bcc0
+Start:972[Byte],Size:4[Byte],Param:waddr,Value:0x822c9ec0
+cast_fp16_fp32[172_node_post_2_1_cast_fp16_fp32_R_W]
+Start:1024[Byte],Size:4[Byte],Param:raddr,Value:0x822c9ec0
+Start:1028[Byte],Size:4[Byte],Param:waddr,Value:0x82318100

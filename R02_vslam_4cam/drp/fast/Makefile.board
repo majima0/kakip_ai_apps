@@ -1,0 +1,29 @@
+#
+# $Id: Makefile,v 1.1 2019/01/28 04:31:50 hayashdi Exp $
+#
+
+APPLI		= fast
+
+CC		= g++
+FLAGS		= -O3 -Wall -Wextra -W -g -march=native -fopenmp -flto -s -lstdc++ -L/usr/local/lib
+INCLUDE		= -I../util
+# FLAGS		= -Wall -W -Wl,--stack,10485760 -g
+# please replace when Segmentation fault occured
+SRCS		= board.cpp
+
+TARGET		= board.exe
+DEPEND		= $(patsubst %.cpp,%.d,$(SRCS))
+
+all		: $(TARGET) $(DEPEND)
+
+$(TARGET)	: $(SRCS)
+	$(CC) $(FLAGS) $(INCLUDE) $(SRCS) -o $(TARGET) ../util/AIPoC2N/lib/r_dp2n.o ../util/AIPoC2N/load_save_bin.o
+
+clean		:
+	rm -rf $(TARGET) $(DEPEND)
+
+-include $(DEPEND)
+
+$(DEPEND): $(SRCS)
+	$(info generate $@)
+	@$(CC) -MM $(FLAGS) $(INCLUDE) $(SRCS) | sed 's/\($*\)\.o[ :]*/\1.o $@ : /g' > $@

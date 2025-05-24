@@ -1,0 +1,15 @@
+Output_node_name: 2020_post
+         Address: 0x823db600
+         Channel: 25
+         Width  : 20
+         Height : 20
+Output_node_name: 4040_post
+         Address: 0x823b4500
+         Channel: 25
+         Width  : 40
+         Height : 40
+Output_node_name: 8080_post
+         Address: 0x82318100
+         Channel: 25
+         Width  : 80
+         Height : 80

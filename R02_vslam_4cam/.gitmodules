@@ -1,0 +1,8 @@
+[submodule "drp_cv_lib"]
+	path = drp_cv_lib
+	url = ../drp_cv_lib.git
+	branch = main
+	ignore = dirty
+[submodule "Thirdparty/clx"]
+	path = Thirdparty/clx
+	url = https://github.com/clown/clx
