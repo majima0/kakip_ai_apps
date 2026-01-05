@@ -6,8 +6,10 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument("--model-dir", type=str)
-parser.add_argument("--video-path", type=str)
+parser.add_argument("--model-dir", type=str, required=True)
+parser.add_argument("--video-path", type=str, required=True)
+parser.add_argument("--display", action="store_true", default=False)
+parser.add_argument("--print", action="store_true", default=False)
 
 args = parser.parse_args()
 
@@ -132,15 +134,20 @@ while True:
         y_min = d.bbox.y - d.bbox.h / 2
         x_max = d.bbox.x + d.bbox.w / 2
         y_max = d.bbox.y + d.bbox.h / 2
-        cv2.rectangle(input_img, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 0, 255), 2)
+        if args.print:
+            print(d.bbox.x, d.bbox.y, d.bbox.w, d.bbox.h, d.c, d.prob)
+        if args.display:
+            cv2.rectangle(input_img, (int(x_min), int(y_min)), (int(x_max), int(y_max)), (0, 0, 255), 2)
 
-    show_size = (640, 360)
-    show_img = cv2.resize(input_img[0:480, 0:640], show_size)
-    cv2.imshow("show img", show_img)
-    #cv2.imwrite('/home/ubuntu/test.jpg', input_img)
-    key = cv2.waitKey(1)
-    if key == ord('q'):
-        break
+    if args.display:
+        show_size = (640, 360)
+        show_img = cv2.resize(input_img[0:480, 0:640], show_size)
+        cv2.imshow("show img", show_img)
+        #cv2.imwrite('/home/ubuntu/test.jpg', input_img)
+        key = cv2.waitKey(1)
+        if key == ord('q'):
+            break
 
-cv2.destroyAllWindows()
+if args.display:
+    cv2.destroyAllWindows()
 os.close(fd)

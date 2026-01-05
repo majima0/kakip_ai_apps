@@ -1,0 +1,13 @@
+[project]
+name = "python-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "opencv-python>=4.12.0.88",
+    "pydrpai",
+]
+
+[tool.uv.sources]
+pydrpai = { path = "../pydrpai/dist/pydrpai-0.1.0-cp312-cp312-linux_aarch64.whl" }

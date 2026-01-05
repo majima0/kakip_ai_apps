@@ -23,7 +23,7 @@ namespace py = pybind11;
 
 // ライブラリのファイル名と同じにしないといけない
 // ダブルクオーテーションで囲わない
-PYBIND11_MODULE(pydrpai, m) {
+PYBIND11_MODULE(_core, m) {
     // cpp_extentino.__doc__に設定される
     m.doc() = "pybind11 example plugin"; // optional module docstring
 
